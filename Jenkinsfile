@@ -1,12 +1,20 @@
-node('docker') {
- 
-    stage 'Checkout'
+node {
+     def app
+
+    stage('Clone repository') {
+        /* Cloning the Repository to our Workspace */
         checkout scm
-    stage 'Build & UnitTest'
-        sh "docker build -t appprojenkin:B${BUILD_NUMBER} -f Dockerfile ."
-        sh "docker build -t appprojenkin:test-B${BUILD_NUMBER} -f Dockerfile.Integration ."
-  
-    stage 'Integration Test'
-        sh "docker-compose -f docker-compose.integration.yml up --force-recreate --abort-on-container-exit"
-        sh "docker-compose -f docker-compose.integration.yml down -v"
+    }
+
+    stage('Build image') {
+        /* This builds the actual image */
+
+    }
+
+    stage('Test image') {
+        
+        app.inside {
+            echo "Tests passed"
+        }
+    }
 }
