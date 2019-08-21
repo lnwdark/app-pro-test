@@ -8,19 +8,13 @@ node {
 
     stage('Build image') {
         /* This builds the actual image */
-
+        sh "docker-compose up -d"
     }
 
     stage('Test image') {
         
         app.inside {
             echo "Tests passed"
-        }
-    }
-    
-    stage('Push Production') {
-        app.inside {
-            echo "Tests Production"
         }
     }
 }
