@@ -17,4 +17,8 @@ node {
             echo "Tests passed"
         }
     }
+    
+    stage('Push Production') {
+       echo "Tests passed"
+    }
 }
