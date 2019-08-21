@@ -19,6 +19,8 @@ node {
     }
     
     stage('Push Production') {
-       echo "Tests passed"
+        app.inside {
+            echo "Tests Production"
+        }
     }
 }
